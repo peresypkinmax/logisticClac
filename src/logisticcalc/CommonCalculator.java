@@ -44,6 +44,8 @@ public abstract class CommonCalculator {
     protected int ktk40Ship;     // количество отгрузок 40 футовым контейнером
     protected int ktk20Ship;     //  количество отгрузок 20 футовым контейнером
     
+    protected Double currentFrKGSCost; // стоимость перевоза ед. груза в зависимости от веса
+    
     /**
      * CONSTANTS
      */
@@ -275,6 +277,14 @@ public abstract class CommonCalculator {
 
     public Double getINSUR_RATE() {
         return INSUR_RATE;
+    }
+
+    public Double getCurrentFrKGSCost() {
+        return currentFrKGSCost;
+    }
+
+    public void setCurrentFrKGSCost(Double currentFrKGSCost) {
+        this.currentFrKGSCost = currentFrKGSCost;
     }
     
     

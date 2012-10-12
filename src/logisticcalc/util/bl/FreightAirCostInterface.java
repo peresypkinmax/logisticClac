@@ -4,6 +4,7 @@
  */
 package logisticcalc.util.bl;
 
+import java.util.List;
 import logisticcalc.util.persist.FreightAirCost;
 
 /**
@@ -12,8 +13,8 @@ import logisticcalc.util.persist.FreightAirCost;
  */
 public interface FreightAirCostInterface {
     
-    public void findAllItems();
-    public void findItemsByCountry(String country);
+    public List<FreightAirCost> findAllItems();
+    public List<FreightAirCost> findItemsByCountry(String country);
     public void saveOrUpdateItem(FreightAirCost freightAirCost);
     public void addItem(FreightAirCost freightAirCost);
     

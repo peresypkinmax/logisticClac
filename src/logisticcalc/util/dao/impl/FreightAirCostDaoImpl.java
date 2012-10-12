@@ -4,6 +4,7 @@
  */
 package logisticcalc.util.dao.impl;
 
+import java.util.List;
 import logisticcalc.util.dao.FreightAirCostDao;
 import logisticcalc.util.persist.FreightAirCost;
 
@@ -12,15 +13,25 @@ import logisticcalc.util.persist.FreightAirCost;
  * @author макс
  */
 public class FreightAirCostDaoImpl implements FreightAirCostDao{
+    
+    Msqlconn msqlconn;
+    
+    
+    /**
+     * CONSTRUCTOR
+     */
+    public FreightAirCostDaoImpl(){
+        this.msqlconn = new Msqlconn("root","root","jdbc:mysql://localhost:3306/logisticcalc");
+    }    
 
     @Override
-    public void findAllItems() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public List<FreightAirCost> findAllItems() {
+        return msqlconn.mquery("select * from freightaircost");
     }
 
     @Override
-    public void findItemsByCountry(String country) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public List<FreightAirCost> findItemsByCountry(String country) {
+        return msqlconn.mquery("select * from freightaircost where fromCountry='"+country+"'");
     }
 
     @Override

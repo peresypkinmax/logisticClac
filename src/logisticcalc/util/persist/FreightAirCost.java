@@ -11,8 +11,8 @@ package logisticcalc.util.persist;
 public class FreightAirCost {
     long costID;
     String fromCountry;
-    int fromWieght;
-    int toWeight;
+    long fromWieght;
+    long toWeight;
     Double cost;
 
 
@@ -37,19 +37,19 @@ public class FreightAirCost {
         this.fromCountry = fromCountry;
     }
 
-    public int getFromWieght() {
+    public long getFromWieght() {
         return fromWieght;
     }
 
-    public void setFromWieght(int fromWieght) {
+    public void setFromWieght(long fromWieght) {
         this.fromWieght = fromWieght;
     }
 
-    public int getToWeight() {
+    public long getToWeight() {
         return toWeight;
     }
 
-    public void setToWeight(int toWeight) {
+    public void setToWeight(long toWeight) {
         this.toWeight = toWeight;
     }
 

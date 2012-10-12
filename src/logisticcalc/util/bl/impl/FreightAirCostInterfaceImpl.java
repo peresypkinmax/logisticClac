@@ -4,7 +4,10 @@
  */
 package logisticcalc.util.bl.impl;
 
+import java.util.List;
 import logisticcalc.util.bl.FreightAirCostInterface;
+import logisticcalc.util.dao.FreightAirCostDao;
+import logisticcalc.util.dao.impl.FreightAirCostDaoImpl;
 import logisticcalc.util.persist.FreightAirCost;
 
 /**
@@ -13,14 +16,17 @@ import logisticcalc.util.persist.FreightAirCost;
  */
 public class FreightAirCostInterfaceImpl implements FreightAirCostInterface{
 
+    FreightAirCostDao facd = new FreightAirCostDaoImpl();
+    
+    
     @Override
-    public void findAllItems() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public List<FreightAirCost> findAllItems() {
+        return facd.findAllItems();
     }
 
     @Override
-    public void findItemsByCountry(String country) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public List<FreightAirCost> findItemsByCountry(String country) {
+        return facd.findItemsByCountry(country);
     }
 
     @Override

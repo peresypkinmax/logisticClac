@@ -2,9 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package msqlconn;
+package logisticcalc.util.dao.impl;
 import java.sql.*;
 import java.util.*;
+import logisticcalc.util.persist.FreightAirCost;
 
 /**
  *
@@ -79,17 +80,30 @@ public class Msqlconn {
     // Вставка в таблицу конец
    
    
-    public ResultSet mquery(String sql)
+    public List<FreightAirCost> mquery(String sql)
     {
+        List<FreightAirCost> facList= new ArrayList<FreightAirCost>(5);
         try{
+            
           Statement st = conn.createStatement();
           ResultSet rs = st.executeQuery(sql);
-          return rs;
+          //rs.first();
+          while(rs.next())
+          {           
+              FreightAirCost fac = new FreightAirCost();
+              fac.setCostID(rs.getInt(1));
+              fac.setFromCountry(rs.getString(2));
+              fac.setFromWieght(rs.getLong(3));
+              fac.setToWeight(rs.getLong(4));
+              fac.setCost(rs.getDouble(5));          
+              facList.add(fac);
+          } 
+          return facList;
         }
         catch(SQLException e)
         {
             e.printStackTrace();
-            return null;
+            return new ArrayList<FreightAirCost>(0);
         }
         finally{}
         
