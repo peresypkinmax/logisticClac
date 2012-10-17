@@ -24,6 +24,83 @@ public class EverageMethodCalculator extends CommonCalculator{
     final Double SFR_KTK_40_COST = 2200.0; // ставка фрахта контейнера 20 футов до Владивостока
 
 
+    
+    
+    /**
+     * Расчеты
+     */
+    
+    
+    /**
+     * Стоимость логистики  Автомобиль по Китаю/ жд. по России
+     */
+    
+    public Double Me1Log(){
+        return ((VW_CH_COST + RVW_RU_COST) * valueWeight) + B_SHIP_DOC + (C_PACK * calcQOC()) + INSP_RATE + (qty * fob * TAX_RFN);
+    }
+
+    /**
+     * Стоимость логистики  Автомобиль по Китаю/ жд. по России за киллограмм
+     */
+    
+    public Double Me1LogKGS(){
+        return Me1Log()/calcTotalGWeight();
+    }    
+    
+    
+    /**
+     * Стоимость логистики Автомобиль по Китаю/ жд. по России за единицу
+     */
+    
+    public Double Me1LogPCS(){
+        return Me1Log()/qty;
+    }  
+    
+    
+    /**
+     * Стоимость товара Автомобиль по Китаю/ жд. по России за единицу
+     */
+    
+    public Double Me1PCS(){
+        return Me1LogPCS() + calcFOBQuatr();
+    }      
+    
+    
+        /**
+     * Стоимость логистики  Автомобиль по Китаю/ авиа по России
+     */
+    
+    public Double Me2Log(){
+        return ((VW_CH_COST + AVW_RU_COST) * valueWeight) + B_SHIP_DOC + (C_PACK * calcQOC()) + INSP_RATE + (qty * fob * TAX_RFN);
+    }
+
+    /**
+     * Стоимость логистики  Автомобиль по Китаю/ авиа по России за киллограмм
+     */
+    
+    public Double Me2LogKGS(){
+        return Me2Log()/calcTotalGWeight();
+    }    
+    
+    
+    /**
+     * Стоимость логистики Автомобиль по Китаю/ авиа по России за единицу
+     */
+    
+    public Double Me2LogPCS(){
+        return Me2Log()/qty;
+    }  
+    
+    
+    /**
+     * Стоимость товара Автомобиль по Китаю/ авиа по России за единицу
+     */
+    
+    public Double Me2PCS(){
+        return Me2LogPCS() + calcFOBQuatr();
+    } 
+    
+    
     /**
      * GETTER AND SETTER SECTION
      */

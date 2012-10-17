@@ -18,6 +18,8 @@ public class FastMethodCalculator extends CommonCalculator{
     Double aFRCost; // стоимость авиадоставки
     Double docCost;  // стоимость экспортных документов
     
+    
+    
     /**
      * CONSTANTS
      */
@@ -53,6 +55,37 @@ public class FastMethodCalculator extends CommonCalculator{
 
     public Double calcDocCost(){
         return calcAShip()*ASHIP_DOC;
+    }
+    
+    
+    /**
+     * Расчеты
+     */
+    
+    
+    
+    /**
+     * Полная стоимость логистики
+     * @return 
+     */
+    public Double calcExLog(){
+        return calcDocCost() + calcAFRCost() + INSP_RATE;
+    }
+    
+     /**
+     * Полная стоимость логистики за киллограмм (без таможенного оформления)
+     * @return 
+     */
+    public Double calcExLogKGS(){
+        return calcExLog()/calcTotalGWeight();
+    }
+    
+         /**
+     * Полная стоимость логистики за штуку товара (без таможенного оформления)
+     * @return 
+     */
+    public Double calcExLogPCS(){
+        return calcExLog()/qty;
     }
 /**
  * GETTER AND SETTER SECTION
